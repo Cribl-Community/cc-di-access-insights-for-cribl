@@ -1,0 +1,44 @@
+.js-expr-editor {
+  width: 100%;
+}
+
+.js-expr-editor .cm-editor {
+  width: 100%;
+}
+
+.js-expr-editor {
+  --expr-string: #b35900;
+  --expr-fn: #007a78;
+  --expr-prop: #1d5fbf;
+  --expr-keyword: #6b3fd1;
+  --expr-number: #9a6700;
+  --expr-op: #5b6573;
+  --expr-var: #1c2024;
+  --expr-comment: #8b8d98;
+}
+
+.dark .js-expr-editor {
+  --expr-string: #ffb86b;
+  --expr-fn: #5ff2ef;
+  --expr-prop: #9cc7ff;
+  --expr-keyword: #b18cff;
+  --expr-number: #ffc53d;
+  --expr-op: #a9b8c8;
+  --expr-var: #eaf0f6;
+  --expr-comment: #6a849f;
+}
+
+/* Selection + cursor in dark */
+.dark .js-expr-editor .cm-selectionBackground,
+.dark .js-expr-editor .cm-focused .cm-selectionBackground {
+  background: color-mix(in srgb, var(--rbac-teal) 28%, transparent) !important;
+}
+
+.dark .js-expr-editor .cm-tooltip-autocomplete ul li {
+  color: var(--cds2-color-foreground-default);
+}
+
+.dark .js-expr-editor .cm-matchingBracket {
+  background: color-mix(in srgb, var(--rbac-teal) 25%, transparent);
+  outline: none;
+}

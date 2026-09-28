@@ -1,0 +1,70 @@
+# Product API access declaration. Declare Cribl product API paths your app needs to access.
+# At install time, admins see exactly which platform resources the app will use.
+
+policies:
+  # Teams hold the role assignments.
+  - object: '/system/teams'
+    actions: ['GET']
+  - object: '/system/teams/:id/users'
+    actions: ['GET']
+  # Per-Team resolved resource access (Worker Groups, datasets, dashboards, …) —
+  # fetched lazily when a Team is opened. One call, spans every product.
+  - object: '/system/teams/:id/acl'
+    actions: ['GET']
+  - object: '/system/roles'
+    actions: ['GET']
+
+  # Cribl Cloud has no direct "list users" API — the roster is built by
+  # merging the per-product member lists, which also carry each user's
+  # teams[]/roles[] inline.
+  - object: '/products/stream/users'
+    actions: ['GET']
+  - object: '/products/edge/users'
+    actions: ['GET']
+  - object: '/products/search/users'
+    actions: ['GET']
+  - object: '/products/lake/users'
+    actions: ['GET']
+  - object: '/products/outpost/users'
+    actions: ['GET']
+  # API Credentials (Cribl.Cloud M2M clients) — separate from product members,
+  # merged into the roster so they're counted and browsable like any account.
+  - object: '/system/credentials'
+    actions: ['GET']
+
+  # Per-user, per-product resolved resource access (Worker Groups, datasets,
+  # dashboards, etc.) — fetched lazily when a user is opened.
+  - object: '/products/stream/users/:id/acl'
+    actions: ['GET']
+  - object: '/products/edge/users/:id/acl'
+    actions: ['GET']
+  - object: '/products/search/users/:id/acl'
+    actions: ['GET']
+  - object: '/products/lake/users/:id/acl'
+    actions: ['GET']
+  - object: '/products/outpost/users/:id/acl'
+    actions: ['GET']
+
+  # Worker Group / Fleet names, to resolve the `gid` on ACL entries into
+  # something readable. Search and Lake don't have Worker Groups.
+  - object: '/products/stream/groups'
+    actions: ['GET']
+  - object: '/products/edge/groups'
+    actions: ['GET']
+  - object: '/products/outpost/groups'
+    actions: ['GET']
+
+  # Reverse lookup — the users and teams with permissions on a given Worker
+  # Group / Fleet, fetched lazily when a group is opened on the Worker Groups tab.
+  - object: '/products/stream/groups/:id/acl'
+    actions: ['GET']
+  - object: '/products/stream/groups/:id/acl/teams'
+    actions: ['GET']
+  - object: '/products/edge/groups/:id/acl'
+    actions: ['GET']
+  - object: '/products/edge/groups/:id/acl/teams'
+    actions: ['GET']
+  - object: '/products/outpost/groups/:id/acl'
+    actions: ['GET']
+  - object: '/products/outpost/groups/:id/acl/teams'
+    actions: ['GET']

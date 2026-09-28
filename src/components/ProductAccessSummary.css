@@ -1,0 +1,29 @@
+.product-access {
+  display: flex;
+  flex-direction: column;
+  max-width: 460px;
+}
+
+.product-access-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: token('spacing.md');
+  padding: token('spacing.sm') 0;
+}
+
+.product-access-row + .product-access-row {
+  border-top: token('border.default');
+}
+
+.product-access-label {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.product-access-value {
+  display: flex;
+  justify-content: flex-end;
+}

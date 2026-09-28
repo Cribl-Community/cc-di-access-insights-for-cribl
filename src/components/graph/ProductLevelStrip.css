@@ -1,0 +1,45 @@
+.pls {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.pls-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  height: 36px;
+  padding: 0 12px 0 10px;
+  border-radius: 10px;
+  border: 1px solid var(--rbac-card-border);
+  background: var(--rbac-card-inner-bg);
+  font-size: 13px;
+}
+
+.pls-item-none {
+  opacity: 0.6;
+}
+
+.pls-item-org {
+  border-color: color-mix(in srgb, var(--rbac-teal) 45%, transparent);
+}
+
+.pls-name {
+  font-weight: 600;
+  color: var(--cds2-color-foreground-default);
+}
+
+.pls-level {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 12px;
+  color: var(--cds2-color-foreground-subtle);
+}
+
+.pls-swatch {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}

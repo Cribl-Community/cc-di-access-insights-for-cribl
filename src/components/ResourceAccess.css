@@ -1,0 +1,49 @@
+.ra-loading {
+  display: flex;
+  justify-content: center;
+  padding: token('spacing.xl');
+}
+
+.ra {
+  display: flex;
+  flex-direction: column;
+  gap: token('spacing.md');
+}
+
+.access-table {
+  max-width: 760px;
+}
+
+.access-group-cell {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.access-group-link {
+  font-size: 13px;
+  font-weight: 600;
+  color: token('color.foreground.link');
+  text-decoration: none;
+}
+
+.access-group-link:hover {
+  text-decoration: underline;
+}
+
+.access-group-link:focus-visible {
+  outline: 2px solid token('color.border.focus');
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* Thicker rule between one group's rows and the next */
+.access-table .access-group-start td {
+  border-top: 2px solid token('color.border.neutral.strong');
+}
+
+.ra-caveats {
+  display: flex;
+  flex-direction: column;
+  gap: token('spacing.xs');
+}

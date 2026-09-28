@@ -1,0 +1,21 @@
+.compare-page {
+  height: 100%;
+  overflow-y: auto;
+  padding: token('spacing.xl');
+  display: flex;
+  flex-direction: column;
+  gap: token('spacing.lg');
+}
+
+.compare-page > * {
+  width: 100%;
+  max-width: 1440px;
+}
+
+.compare-pickers {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: end;
+  gap: token('spacing.md');
+  padding: token('spacing.md') token('spacing.lg');
+}

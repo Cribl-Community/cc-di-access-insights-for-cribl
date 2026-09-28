@@ -1,0 +1,85 @@
+.directory-page {
+  display: flex;
+  flex-direction: column;
+  gap: token('spacing.lg');
+  height: 100%;
+  min-height: 0;
+  padding: token('spacing.xl');
+}
+
+.directory-header {
+  flex-shrink: 0;
+}
+
+.directory-header-compact .page-header-row {
+  align-items: center;
+  justify-content: flex-start;
+  gap: token('spacing.xl');
+}
+
+.directory-body {
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.segmented {
+  display: inline-flex;
+  align-self: flex-start;
+  gap: 4px;
+  padding: 4px;
+  border-radius: 999px;
+  border: 1px solid var(--rbac-card-border);
+  background: color-mix(in srgb, var(--cds2-color-foreground-default) 4%, transparent);
+}
+
+.segmented-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  height: 34px;
+  padding: 0 14px;
+  border-radius: 999px;
+  color: var(--cds2-color-foreground-subtle);
+  font-size: 13px;
+  font-weight: 500;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.segmented-item:hover {
+  color: var(--cds2-color-foreground-default);
+}
+
+.segmented-item:focus-visible {
+  outline: 2px solid var(--cds2-color-border-focus);
+}
+
+.segmented-item-active,
+.segmented-item-active:hover {
+  color: var(--cds2-color-foreground-default);
+  font-weight: 600;
+  background: linear-gradient(90deg, color-mix(in srgb, var(--rbac-teal) 28%, transparent), color-mix(in srgb, var(--rbac-teal) 12%, transparent));
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--rbac-teal) 35%, transparent);
+}
+
+.segmented-item-active svg {
+  color: var(--rbac-teal);
+}
+
+.segmented-count {
+  min-width: 20px;
+  padding: 0 6px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 600;
+  text-align: center;
+  line-height: 18px;
+  color: var(--cds2-color-foreground-subtle);
+  background: color-mix(in srgb, var(--cds2-color-foreground-default) 8%, transparent);
+}
+
+.segmented-item-active .segmented-count {
+  color: var(--cds2-color-foreground-default);
+  background: color-mix(in srgb, var(--rbac-teal) 25%, transparent);
+}

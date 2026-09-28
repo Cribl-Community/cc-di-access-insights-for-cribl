@@ -1,0 +1,219 @@
+.entity-list {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 0;
+  background-color: token('color.background.surface');
+}
+
+.entity-list-search {
+  padding: token('spacing.md');
+  border-bottom: token('border.default');
+  flex-shrink: 0;
+}
+
+.entity-list-count {
+  display: block;
+  padding: token('spacing.xs') token('spacing.md');
+  color: token('color.foreground.subtle');
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  border-bottom: token('border.default');
+  flex-shrink: 0;
+}
+
+.entity-list-items {
+  list-style: none;
+  overflow-y: auto;
+  flex: 1;
+  min-height: 0;
+  padding: token('spacing.xs');
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.entity-list-empty {
+  padding: token('spacing.lg');
+}
+
+/* --- Collapsible section (Cribl-nav style) --- */
+.entity-section {
+  display: flex;
+  flex-direction: column;
+}
+
+.entity-section + .entity-section {
+  margin-top: token('spacing.xs');
+  border-top: token('border.default');
+  padding-top: token('spacing.xs');
+}
+
+.entity-section-header {
+  display: flex;
+  align-items: center;
+  gap: token('spacing.xs');
+  width: 100%;
+  padding: token('spacing.xs') token('spacing.sm');
+  margin: 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: token('color.foreground.subtle');
+  font: inherit;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  border-radius: token('radius.md');
+}
+
+.entity-section-header:hover {
+  background-color: token('color.background.neutral.hover');
+  color: token('color.foreground.default');
+}
+
+.entity-section-header:focus-visible {
+  outline: 2px solid token('color.border.focus');
+  outline-offset: -2px;
+}
+
+.entity-section-caret {
+  display: inline-flex;
+}
+
+.entity-section-caret svg {
+  width: 10px;
+  height: 10px;
+}
+
+.entity-section-label {
+  flex: 1;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  text-align: left;
+}
+
+.entity-section-count {
+  color: token('color.foreground.subtle');
+  font-weight: 600;
+}
+
+.entity-section-items {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+/* --- Row --- */
+.entity-row {
+  border-radius: token('radius.md');
+}
+
+.entity-row-button {
+  display: flex;
+  align-items: center;
+  gap: token('spacing.sm');
+  width: 100%;
+  background: none;
+  border: none;
+  padding: token('spacing.sm');
+  margin: 0;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  color: inherit;
+  border-radius: token('radius.md');
+  transition: background-color 0.1s ease;
+}
+
+.entity-row-button:hover {
+  background-color: token('color.background.neutral.hover');
+}
+
+.entity-row-button:focus-visible {
+  outline: 2px solid token('color.border.focus');
+  outline-offset: -2px;
+}
+
+.entity-row-selected .entity-row-button,
+.entity-row-selected .entity-row-button:hover {
+  background-color: token('color.background.accent.subtle');
+  box-shadow: inset 3px 0 0 token('color.background.accent.solid.default');
+}
+
+.entity-row-selected .entity-row-title-text {
+  font-weight: 600;
+}
+
+/* --- Avatar --- */
+.entity-avatar {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: token('radius.full');
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  background-color: var(--avatar-bg);
+  color: var(--avatar-fg);
+}
+
+.entity-avatar svg {
+  width: 15px;
+  height: 15px;
+}
+
+.entity-avatar-accent {
+  --avatar-bg: token('color.background.accent.subtle');
+  --avatar-fg: token('color.foreground.accent.default');
+}
+
+.entity-avatar-highlight {
+  --avatar-bg: token('color.background.highlight.subtle');
+  --avatar-fg: token('color.foreground.highlight.default');
+}
+
+.entity-avatar-info {
+  --avatar-bg: token('color.background.info.subtle');
+  --avatar-fg: token('color.foreground.info.default');
+}
+
+/* --- Text --- */
+.entity-row-text {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  min-width: 0;
+  flex: 1;
+}
+
+.entity-row-title {
+  display: flex;
+  align-items: center;
+  gap: token('spacing.xs');
+  min-width: 0;
+}
+
+.entity-row-title-text {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.entity-row-subtitle {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  color: token('color.foreground.subtle');
+  font-size: 12px;
+}

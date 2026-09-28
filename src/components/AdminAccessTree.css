@@ -1,0 +1,71 @@
+.aat {
+  display: flex;
+  flex-direction: column;
+  gap: token('spacing.md');
+}
+
+.aat-block {
+  padding: token('spacing.md');
+  border: 1px solid token('color.border.info.subtle');
+  border-radius: token('radius.md');
+  background-color: token('color.background.info.subtle');
+}
+
+.aat-header {
+  display: flex;
+  align-items: center;
+  gap: token('spacing.xs');
+  flex-wrap: wrap;
+  margin-bottom: token('spacing.sm');
+}
+
+.aat-header svg {
+  width: 15px;
+  height: 15px;
+  color: token('color.foreground.info.default');
+}
+
+.aat-root,
+.aat-children {
+  list-style: none;
+}
+
+.aat-row {
+  display: inline-flex;
+  align-items: center;
+  gap: token('spacing.sm');
+  padding: 3px 0;
+}
+
+/* Nested levels get an indent + tree connector lines */
+.aat-children {
+  padding-left: token('spacing.md');
+}
+
+.aat-children > .aat-node {
+  position: relative;
+  padding-left: token('spacing.md');
+}
+
+.aat-children > .aat-node::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  border-left: 1px solid token('color.border.neutral.default');
+}
+
+.aat-children > .aat-node:last-child::before {
+  bottom: auto;
+  height: 15px;
+}
+
+.aat-children > .aat-node::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 15px;
+  width: token('spacing.sm');
+  border-top: 1px solid token('color.border.neutral.default');
+}

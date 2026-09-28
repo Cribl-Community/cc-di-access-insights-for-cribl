@@ -1,0 +1,241 @@
+.compare-view {
+  display: flex;
+  flex-direction: column;
+  gap: token('spacing.lg');
+}
+
+.compare-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: token('spacing.md');
+}
+
+.compare-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.compare-table thead th {
+  text-align: left;
+  padding: 0 token('spacing.md') token('spacing.xs') 0;
+  border-bottom: token('border.default');
+  color: token('color.foreground.subtle');
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  white-space: nowrap;
+}
+
+.compare-table thead th.compare-corner {
+  width: 34%;
+}
+
+.compare-table tbody th {
+  text-align: left;
+  font-weight: 600;
+  vertical-align: top;
+}
+
+.compare-table td,
+.compare-table tbody th {
+  padding: token('spacing.sm') token('spacing.md') token('spacing.sm') 0;
+  border-bottom: token('border.default');
+  vertical-align: top;
+}
+
+.compare-table tr:last-child td,
+.compare-table tr:last-child th {
+  border-bottom: none;
+}
+
+.compare-table td:last-child,
+.compare-table th:last-child {
+  padding-right: 0;
+}
+
+.compare-row-label {
+  display: inline-flex;
+  align-items: center;
+  gap: token('spacing.xs');
+}
+
+.compare-row-diff td,
+.compare-row-diff th {
+  background-color: token('color.background.warning.subtle');
+}
+
+.compare-value {
+  display: inline-flex;
+  align-items: center;
+  gap: token('spacing.xs');
+}
+
+.compare-lead {
+  color: token('color.foreground.accent.default');
+  font-size: 9px;
+  line-height: 1;
+}
+
+.compare-groups {
+  display: flex;
+  flex-direction: column;
+  gap: token('spacing.md');
+}
+
+.compare-chip-group {
+  display: flex;
+  flex-direction: column;
+  gap: token('spacing.xs');
+}
+
+.compare-chip-count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 18px;
+  padding: 0 token('spacing.xs');
+  border-radius: token('radius.full');
+  background-color: token('color.background.neutral.subtle');
+  color: token('color.foreground.subtle');
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.access-compare tbody th {
+  font-weight: 400;
+}
+
+.compare-loading {
+  display: flex;
+  justify-content: center;
+  padding: token('spacing.xl');
+}
+
+/* ---- Access Check: toolbar, summary, matrix, graph -------------------- */
+.compare-toolbar-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.compare-summary {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 12px;
+}
+
+.compare-summary .compare-summary-card {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 14px 16px;
+  border-left: 3px solid var(--rbac-card-border);
+}
+
+.compare-summary-value {
+  font-size: 28px;
+  font-weight: 600;
+  line-height: 1.15;
+  color: var(--cds2-color-foreground-default);
+}
+
+.compare-summary-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--cds2-color-foreground-default);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.compare-summary-hint {
+  font-size: 11px;
+  color: var(--cds2-color-foreground-subtle);
+}
+
+.compare-summary .compare-tone-a {
+  border-left-color: var(--rbac-teal);
+}
+
+.compare-summary .compare-tone-b {
+  border-left-color: #b18cff;
+}
+
+.compare-summary .compare-tone-warn {
+  border-left-color: var(--cds2-color-foreground-warning-default);
+}
+
+.compare-summary .compare-tone-both {
+  border-left-color: var(--rbac-card-border);
+}
+
+.compare-matrix-card,
+.compare-graph-card {
+  padding: 16px;
+}
+
+.compare-matrix {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0 4px;
+}
+
+.compare-matrix thead th {
+  text-align: left;
+  padding: 0 12px 4px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--cds2-color-foreground-subtle);
+}
+
+.compare-matrix tbody th,
+.compare-matrix tbody td {
+  padding: 8px 12px;
+  background: var(--rbac-card-inner-bg);
+  font-size: 13px;
+  text-align: left;
+}
+
+.compare-matrix tbody th {
+  border-radius: 10px 0 0 10px;
+  font-weight: 600;
+  width: 28%;
+}
+
+.compare-matrix tbody td:last-child {
+  border-radius: 0 10px 10px 0;
+}
+
+.matrix-row-diff th,
+.matrix-row-diff td {
+  box-shadow: inset 0 1px 0 color-mix(in srgb, var(--cds2-color-foreground-warning-default) 25%, transparent),
+    inset 0 -1px 0 color-mix(in srgb, var(--cds2-color-foreground-warning-default) 25%, transparent);
+}
+
+.matrix-product {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.matrix-cell {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--cds2-color-foreground-default);
+}
+
+.matrix-bar {
+  width: 28px;
+  height: 8px;
+  border-radius: 4px;
+}
+
+.matrix-lead {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--rbac-teal);
+}

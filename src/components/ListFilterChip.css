@@ -1,0 +1,18 @@
+.list-filter-chip {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: token('spacing.xs');
+  margin-top: token('spacing.sm');
+  padding: token('spacing.xs') token('spacing.xs') token('spacing.xs') token('spacing.sm');
+  border: 1px solid token('color.border.info.subtle');
+  border-radius: token('radius.md');
+  background-color: token('color.background.info.subtle');
+}
+
+.list-filter-chip-label {
+  display: flex;
+  align-items: center;
+  gap: token('spacing.xs');
+  min-width: 0;
+}

@@ -1,0 +1,207 @@
+.app-topbar {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: token('spacing.lg');
+  height: 64px;
+  padding: 0 token('spacing.xl');
+  border-bottom: 1px solid var(--rbac-card-border);
+}
+
+.topbar-search {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: min(420px, 100%);
+  height: 40px;
+  padding: 0 16px;
+  border-radius: 999px;
+  border: 1px solid var(--rbac-card-border);
+  background: color-mix(in srgb, var(--cds2-color-foreground-default) 5%, transparent);
+  color: var(--cds2-color-foreground-subtle);
+}
+
+.topbar-search:focus-within {
+  border-color: var(--cds2-color-border-focus);
+  box-shadow: 0 0 0 1px var(--cds2-color-border-focus);
+}
+
+.topbar-search input {
+  flex: 1;
+  min-width: 0;
+  border: none;
+  outline: none;
+  background: transparent;
+  color: var(--cds2-color-foreground-default);
+  font: inherit;
+  font-size: 14px;
+}
+
+.topbar-search input::placeholder {
+  color: var(--cds2-color-foreground-subtle);
+}
+
+.topbar-search-results {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  right: 0;
+  z-index: 50;
+  list-style: none;
+  margin: 0;
+  padding: 6px;
+  border-radius: 14px;
+  border: 1px solid var(--rbac-card-border);
+  background: var(--cds2-color-neutral-2);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
+}
+
+.topbar-search-hit {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 10px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.topbar-search-hit-active {
+  background: color-mix(in srgb, var(--rbac-teal) 14%, transparent);
+}
+
+.topbar-search-empty {
+  padding: 10px;
+  font-size: 13px;
+  color: var(--cds2-color-foreground-subtle);
+}
+
+.topbar-hit-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 8px;
+  flex-shrink: 0;
+}
+
+.topbar-hit-user {
+  color: var(--rbac-teal);
+  background: color-mix(in srgb, var(--rbac-teal) 14%, transparent);
+}
+
+.topbar-hit-team {
+  color: var(--cds2-color-foreground-highlight-default);
+  background: color-mix(in srgb, var(--cds2-color-foreground-highlight-default) 14%, transparent);
+}
+
+.topbar-hit-key {
+  color: var(--cds2-color-foreground-info-default);
+  background: color-mix(in srgb, var(--cds2-color-foreground-info-default) 14%, transparent);
+}
+
+.topbar-hit-text {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.topbar-hit-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--cds2-color-foreground-default);
+}
+
+.topbar-hit-sub {
+  font-size: 12px;
+  color: var(--cds2-color-foreground-subtle);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.topbar-actions {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: token('spacing.md');
+}
+
+.topbar-pill {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  height: 40px;
+  padding: 0 6px;
+  border-radius: 999px;
+  border: 1px solid var(--rbac-card-border);
+  background: color-mix(in srgb, var(--cds2-color-foreground-default) 5%, transparent);
+}
+
+.topbar-icon-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border: none;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--cds2-color-foreground-subtle);
+  cursor: pointer;
+}
+
+.topbar-icon-btn:hover:not(:disabled) {
+  color: var(--cds2-color-foreground-default);
+  background: color-mix(in srgb, var(--cds2-color-foreground-default) 8%, transparent);
+}
+
+.topbar-icon-btn:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+.topbar-icon-btn:focus-visible {
+  outline: 2px solid var(--cds2-color-border-focus);
+}
+
+.topbar-divider {
+  width: 1px;
+  height: 18px;
+  background: var(--rbac-card-border);
+}
+
+.topbar-spin {
+  display: inline-flex;
+  animation: topbar-spin 0.9s linear infinite;
+}
+
+@keyframes topbar-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.topbar-avatar {
+  border: none;
+  font: inherit;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  font-size: 14px;
+  font-weight: 700;
+  color: #04201f;
+  background: linear-gradient(145deg, #5ff2ef, var(--rbac-teal));
+  box-shadow: 0 0 0 2px var(--rbac-sidebar-bg), 0 0 0 3px color-mix(in srgb, var(--rbac-teal) 50%, transparent);
+}
+
+.topbar-avatar:focus-visible {
+  outline: 2px solid var(--cds2-color-border-focus);
+  outline-offset: 2px;
+}

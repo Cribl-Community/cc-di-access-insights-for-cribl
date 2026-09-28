@@ -1,0 +1,320 @@
+.ag {
+  --ag-edge-direct: var(--rbac-teal);
+  --ag-edge-team: var(--cds2-color-foreground-info-default);
+  --ag-edge-workspace: var(--cds2-color-foreground-highlight-default);
+  --ag-edge-inherited: var(--cds2-color-foreground-subtle);
+  --ag-edge-neutral: color-mix(in srgb, var(--cds2-color-foreground-subtle) 70%, transparent);
+  --ag-a: var(--rbac-teal);
+  --ag-b: #b18cff;
+  --ag-grid: color-mix(in srgb, var(--cds2-color-foreground-default) 7%, transparent);
+
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex: 1;
+  min-height: 0;
+}
+
+/* ---- toolbar ------------------------------------------------------------ */
+.ag-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.ag-chips,
+.ag-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+
+/* ---- canvas ------------------------------------------------------------- */
+.ag-canvas {
+  position: relative;
+  border-radius: 14px;
+  border: 1px solid var(--rbac-card-border);
+  background: color-mix(in srgb, #000 18%, transparent);
+  overflow: hidden;
+  /* Fill whatever height the page gives the graph; scroll below this. */
+  flex: 1;
+  min-height: 320px;
+}
+
+/* React Flow sizes itself with height: 100%, which a flex-grown parent doesn't
+   resolve; pin it to the canvas box instead (it sets position inline). */
+.ag-canvas > .react-flow {
+  position: absolute !important;
+  inset: 0;
+}
+
+.ag-canvas .react-flow,
+.ag-canvas .react-flow.dark {
+  --xy-background-color: transparent;
+  --xy-controls-button-background-color: var(--cds2-color-neutral-3);
+  --xy-controls-button-background-color-hover: var(--cds2-color-neutral-4);
+  --xy-controls-button-color: var(--cds2-color-foreground-default);
+  --xy-controls-button-border-color: var(--rbac-card-border);
+}
+
+.ag-canvas .react-flow__controls {
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid var(--rbac-card-border);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
+}
+
+.ag-loading {
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 5;
+  padding: 4px 12px;
+  border-radius: 999px;
+  font-size: 12px;
+  color: var(--cds2-color-foreground-subtle);
+  background: var(--cds2-color-neutral-3);
+  border: 1px solid var(--rbac-card-border);
+}
+
+/* ---- node --------------------------------------------------------------- */
+.ag-node {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 256px;
+  height: 64px;
+  padding: 0 12px 0 10px;
+  border-radius: 12px;
+  border: 1px solid var(--rbac-card-border);
+  background: linear-gradient(160deg, var(--cds2-color-neutral-4), var(--cds2-color-neutral-3));
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.28);
+  color: var(--cds2-color-foreground-default);
+  transition: opacity 120ms ease, border-color 120ms ease, box-shadow 120ms ease;
+}
+
+.ag-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: 1;
+  min-width: 0;
+  height: 100%;
+}
+
+.ag-expandable {
+  cursor: pointer;
+}
+
+.ag-node:hover {
+  border-color: color-mix(in srgb, var(--rbac-teal) 55%, transparent);
+}
+
+.ag-dim {
+  opacity: 0.32;
+}
+
+.ag-on-path {
+  border-color: var(--rbac-teal);
+  box-shadow: 0 0 0 1px var(--rbac-teal), 0 8px 22px color-mix(in srgb, var(--rbac-teal) 22%, transparent);
+}
+
+/* Principal / root nodes stand out. */
+.ag-node-user,
+.ag-node-apikey,
+.ag-node-team {
+  background: linear-gradient(160deg, color-mix(in srgb, var(--rbac-teal) 22%, var(--cds2-color-neutral-4)), var(--cds2-color-neutral-3));
+}
+
+.ag-handle {
+  opacity: 0;
+  width: 1px;
+  height: 1px;
+  min-width: 0;
+  min-height: 0;
+  border: none;
+}
+
+.ag-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 34px;
+  height: 34px;
+  border-radius: 9px;
+  color: var(--cds2-color-foreground-subtle);
+  background: color-mix(in srgb, var(--cds2-color-foreground-default) 7%, transparent);
+}
+
+.ag-icon-user,
+.ag-icon-apikey,
+.ag-icon-member,
+.ag-icon-direct {
+  color: var(--rbac-teal);
+  background: color-mix(in srgb, var(--rbac-teal) 16%, transparent);
+}
+
+.ag-icon-team,
+.ag-icon-members {
+  color: var(--ag-edge-team);
+  background: color-mix(in srgb, var(--ag-edge-team) 16%, transparent);
+}
+
+.ag-icon-workspace,
+.ag-icon-org {
+  color: var(--ag-edge-workspace);
+  background: color-mix(in srgb, var(--ag-edge-workspace) 16%, transparent);
+}
+
+.ag-icon-role {
+  color: #ffc53d;
+  background: color-mix(in srgb, #ffc53d 14%, transparent);
+}
+
+.ag-icon-product {
+  background: color-mix(in srgb, var(--cds2-color-foreground-default) 10%, transparent);
+}
+
+.ag-text {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  flex: 1;
+  line-height: 1.25;
+}
+
+.ag-label {
+  font-size: 14px;
+  font-weight: 600;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.ag-sub {
+  font-size: 12px;
+  color: var(--cds2-color-foreground-subtle);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.ag-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 4px;
+  flex-shrink: 0;
+}
+
+.ag-level {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 1px 8px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+  white-space: nowrap;
+  color: var(--cds2-color-foreground-default);
+  background: color-mix(in srgb, var(--cds2-color-foreground-default) 8%, transparent);
+}
+
+.ag-swatch {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  display: inline-block;
+}
+
+.ag-open {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  padding: 0;
+  border: none;
+  border-radius: 6px;
+  background: transparent;
+  color: var(--cds2-color-foreground-subtle);
+  cursor: pointer;
+}
+
+.ag-open:hover,
+.ag-open:focus-visible {
+  outline: none;
+  color: var(--rbac-teal);
+  background: color-mix(in srgb, var(--rbac-teal) 14%, transparent);
+}
+
+.ag-toggle {
+  position: absolute;
+  right: -13px;
+  top: 50%;
+  transform: translateY(-50%);
+  min-width: 24px;
+  height: 20px;
+  padding: 0 5px;
+  border-radius: 999px;
+  border: 1px solid color-mix(in srgb, var(--rbac-teal) 55%, transparent);
+  background: var(--cds2-color-neutral-2);
+  color: var(--rbac-teal);
+  font: inherit;
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 18px;
+  cursor: pointer;
+  z-index: 2;
+}
+
+.ag-toggle:hover,
+.ag-toggle:focus-visible {
+  outline: none;
+  background: color-mix(in srgb, var(--rbac-teal) 22%, var(--cds2-color-neutral-2));
+}
+
+/* ---- legend ------------------------------------------------------------- */
+.ag-legend {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px 14px;
+  font-size: 12px;
+  color: var(--cds2-color-foreground-subtle);
+}
+
+.ag-legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.ag-legend-line {
+  display: inline-block;
+  width: 18px;
+  height: 2px;
+  border-radius: 2px;
+}
+
+.ag-legend-dashed {
+  background: repeating-linear-gradient(90deg, var(--ag-edge-inherited) 0 5px, transparent 5px 9px);
+}
+
+.ag-legend-sep {
+  width: 1px;
+  height: 14px;
+  background: var(--rbac-card-border);
+}
+
+.ag-legend-hint {
+  margin-left: auto;
+  font-style: italic;
+}

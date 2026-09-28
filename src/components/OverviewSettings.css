@@ -1,0 +1,26 @@
+.overview-settings {
+  display: flex;
+  flex-direction: column;
+  gap: token('spacing.md');
+  padding: token('spacing.sm');
+  min-width: 220px;
+}
+
+.overview-settings-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: token('spacing.md');
+}
+
+.overview-settings-group {
+  display: flex;
+  flex-direction: column;
+  gap: token('spacing.xs');
+}
+
+.overview-settings-group > :first-child {
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: 2px;
+}

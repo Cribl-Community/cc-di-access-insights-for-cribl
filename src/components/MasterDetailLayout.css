@@ -1,0 +1,110 @@
+.master-detail {
+  position: relative;
+  display: flex;
+  height: 100%;
+  min-height: 0;
+}
+
+.master-detail-list {
+  width: 320px;
+  flex-shrink: 0;
+  border-right: token('border.default');
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.master-detail-detail {
+  flex: 1;
+  min-width: 0;
+  min-height: 0;
+  overflow-y: auto;
+}
+
+/* ---- With a selection: the list folds into a rail and opens as a drawer ---- */
+
+.master-detail-rail {
+  flex-shrink: 0;
+  width: 48px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 12px;
+  border-right: token('border.default');
+}
+
+.md-rail-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  width: 36px;
+  padding: 10px 0;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  background: none;
+  color: var(--cds2-color-foreground-subtle);
+  font: inherit;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.md-rail-btn:hover,
+.md-rail-btn[aria-expanded='true'] {
+  color: var(--cds2-color-foreground-default);
+  border-color: color-mix(in srgb, var(--rbac-teal) 35%, transparent);
+  background: color-mix(in srgb, var(--rbac-teal) 12%, transparent);
+}
+
+.md-rail-btn:focus-visible {
+  outline: 2px solid var(--cds2-color-border-focus);
+  outline-offset: 2px;
+}
+
+.md-rail-label {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  letter-spacing: 0.04em;
+}
+
+.is-collapsed > .master-detail-list {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 48px;
+  z-index: 30;
+  visibility: hidden;
+  transform: translateX(-12px);
+  opacity: 0;
+  background: var(--rbac-sidebar-bg);
+  border-right: 1px solid var(--rbac-card-border);
+  box-shadow: 18px 0 40px rgba(0, 0, 0, 0.45);
+  transition:
+    opacity 140ms ease-out,
+    transform 140ms ease-out,
+    visibility 0s linear 140ms;
+}
+
+.is-drawer-open > .master-detail-list {
+  visibility: visible;
+  transform: none;
+  opacity: 1;
+  transition:
+    opacity 140ms ease-out,
+    transform 140ms ease-out;
+}
+
+.md-scrim {
+  position: absolute;
+  inset: 0 0 0 48px;
+  z-index: 29;
+  background: rgba(4, 10, 18, 0.35);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .is-collapsed > .master-detail-list,
+  .is-drawer-open > .master-detail-list {
+    transition: none;
+  }
+}

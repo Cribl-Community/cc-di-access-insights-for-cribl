@@ -1,0 +1,48 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+/* Every page scrolls inside .app-content; the document itself never scrolls,
+   so nothing can shift the shell sideways or add a second scrollbar. */
+html,
+body {
+  overflow: hidden;
+}
+
+body {
+  background-color: token('color.background.application');
+}
+
+.app-shell {
+  display: flex;
+  height: 100vh;
+  background-color: token('color.background.application');
+  color: token('color.foreground.default');
+}
+
+.dark .app-shell {
+  background:
+    radial-gradient(1200px 600px at 85% -10%, rgba(0, 204, 201, 0.07), transparent 60%),
+    radial-gradient(900px 500px at 10% 110%, rgba(1, 144, 255, 0.06), transparent 60%),
+    var(--cds2-color-background-application);
+}
+
+.app-main {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.app-content {
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+}

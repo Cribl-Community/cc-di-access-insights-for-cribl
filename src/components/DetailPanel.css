@@ -1,0 +1,196 @@
+.detail-panel {
+  display: flex;
+  flex-direction: column;
+  gap: token('spacing.lg');
+  padding: token('spacing.xl');
+  max-width: 1320px;
+}
+
+/* Graph view: the graph card takes all the height left under the header. */
+.detail-panel-fill {
+  box-sizing: border-box;
+  min-height: 100%;
+}
+
+.detail-panel-fill > .detail-graph-card {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.detail-header {
+  display: flex;
+  align-items: flex-start;
+  gap: token('spacing.md');
+}
+
+.detail-avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  border-radius: token('radius.full');
+  background-color: token('color.background.accent.subtle');
+  color: token('color.foreground.accent.default');
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.detail-avatar-team {
+  border-radius: token('radius.md');
+  font-size: 20px;
+}
+
+.detail-header-text {
+  display: flex;
+  flex-direction: column;
+  gap: token('spacing.xs');
+  min-width: 0;
+  padding-top: 2px;
+}
+
+.detail-header-title {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: token('spacing.sm');
+}
+
+.chip-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: token('spacing.xs');
+  align-items: center;
+}
+
+.member-list {
+  display: flex;
+  flex-direction: column;
+  gap: token('spacing.md');
+}
+
+.member-unresolved {
+  display: flex;
+  flex-direction: column;
+  gap: token('spacing.xs');
+  padding-top: token('spacing.md');
+  border-top: token('border.default');
+}
+
+.member-list code {
+  padding: 0 4px;
+  border-radius: token('radius.md');
+  background-color: token('color.background.neutral.subtle');
+  font-size: 0.9em;
+}
+
+.detail-loading {
+  display: flex;
+  justify-content: center;
+  padding: token('spacing.xl');
+}
+
+.detail-chip-row {
+  margin-top: token('spacing.sm');
+}
+
+.detail-table-spaced {
+  margin-top: token('spacing.sm');
+}
+
+/* Key/value list (API key details) */
+.kv-list {
+  display: flex;
+  flex-direction: column;
+  gap: token('spacing.sm');
+  max-width: 560px;
+}
+
+.kv-row {
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  gap: token('spacing.md');
+  align-items: baseline;
+}
+
+.kv-row + .kv-row {
+  border-top: token('border.default');
+  padding-top: token('spacing.sm');
+}
+
+/* Shared detail-panel table (Effective Roles, Resource Access) */
+.detail-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.detail-table th {
+  text-align: left;
+  padding: 0 token('spacing.md') token('spacing.xs') 0;
+  border-bottom: token('border.default');
+  color: token('color.foreground.subtle');
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  white-space: nowrap;
+}
+
+.detail-table td {
+  padding: token('spacing.sm') token('spacing.md') token('spacing.sm') 0;
+  border-bottom: token('border.default');
+  vertical-align: top;
+}
+
+.detail-table tr:last-child td {
+  border-bottom: none;
+}
+
+.detail-table th:last-child,
+.detail-table td:last-child {
+  padding-right: 0;
+}
+
+.role-table {
+  max-width: 540px;
+}
+
+.role-table td {
+  vertical-align: middle;
+}
+
+/* Roles Granted (Team) */
+.role-grant-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: token('spacing.md');
+}
+
+.role-grant-row {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.role-grant-name {
+  display: inline-flex;
+  align-items: center;
+  gap: token('spacing.sm');
+}
+
+.role-grant-product {
+  display: inline-flex;
+  align-items: center;
+  padding: 1px token('spacing.xs');
+  border-radius: token('radius.md');
+  background-color: token('color.background.highlight.subtle');
+  color: token('color.foreground.highlight.default');
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}

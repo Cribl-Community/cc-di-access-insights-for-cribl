@@ -1,0 +1,259 @@
+/*
+ * App theme layer on top of Capra.
+ *
+ * Dark is the default (the `.dark` class is set on <html> in main.tsx).
+ * Two adjustments, both scoped to `.dark` so light mode is untouched:
+ *
+ * 1. Capra's dark neutral scale is a near-black grey; Cribl's product chrome
+ *    is navy. The neutral scale is remapped to navy tints so every Capra
+ *    component (inputs, tables, popovers) follows without per-component CSS.
+ * 2. Upstream token bug: in `.dark`, `--cds2-color-brand-*` still points at
+ *    `--cds2-core-color-cribl-teal-*`, but the dark palette only defines
+ *    `--cds2-core-color-criblteal-*` — so brand fills rendered with the *light*
+ *    teal values. Re-point the light names at the dark values.
+ */
+:root.dark {
+  /* Native scrollbars, form controls and selects render dark too. */
+  color-scheme: dark;
+  scrollbar-color: #2e4a68 transparent;
+
+  --cds2-core-color-slate-1: #0a1420;
+  --cds2-core-color-slate-2: #0e1a28;
+  --cds2-core-color-slate-3: #132234;
+  --cds2-core-color-slate-4: #182a3f;
+  --cds2-core-color-slate-5: #1d324a;
+  --cds2-core-color-slate-6: #243c56;
+  --cds2-core-color-slate-7: #2e4a68;
+  --cds2-core-color-slate-8: #3e5f82;
+  --cds2-core-color-slate-9: #5a7593;
+  --cds2-core-color-slate-10: #6a849f;
+  --cds2-core-color-slate-11: #a9b8c8;
+  --cds2-core-color-slate-12: #eaf0f6;
+
+  --cds2-core-color-cribl-teal-1: var(--cds2-core-color-criblteal-1);
+  --cds2-core-color-cribl-teal-2: var(--cds2-core-color-criblteal-2);
+  --cds2-core-color-cribl-teal-3: var(--cds2-core-color-criblteal-3);
+  --cds2-core-color-cribl-teal-4: var(--cds2-core-color-criblteal-4);
+  --cds2-core-color-cribl-teal-5: var(--cds2-core-color-criblteal-5);
+  --cds2-core-color-cribl-teal-6: var(--cds2-core-color-criblteal-6);
+  --cds2-core-color-cribl-teal-7: var(--cds2-core-color-criblteal-7);
+  --cds2-core-color-cribl-teal-8: var(--cds2-core-color-criblteal-8);
+  --cds2-core-color-cribl-teal-9: var(--cds2-core-color-criblteal-9);
+  --cds2-core-color-cribl-teal-10: var(--cds2-core-color-criblteal-10);
+  --cds2-core-color-cribl-teal-11: var(--cds2-core-color-criblteal-11);
+  --cds2-core-color-cribl-teal-12: var(--cds2-core-color-criblteal-12);
+
+  --cds2-color-background-application: #08111b;
+  --cds2-color-background-surface: #0f1b29;
+
+  /* App-level surfaces (sidebar / cards) that Capra doesn't have a token for. */
+  --rbac-sidebar-bg: #0b1622;
+  --rbac-card-bg: linear-gradient(160deg, #13253a 0%, #0e1b2b 55%, #0c1826 100%);
+  --rbac-card-inner-bg: linear-gradient(160deg, #173150 0%, #102033 70%);
+  --rbac-card-border: rgba(140, 180, 220, 0.12);
+  --rbac-card-shadow: 0 1px 0 rgba(255, 255, 255, 0.03) inset, 0 12px 32px rgba(0, 0, 0, 0.28);
+}
+
+/*
+ * Access-level ordinal ramp (one hue: Cribl teal). Validated with the dataviz
+ * skill's validator (`--ordinal`): light run on #fcfcfd, dark run on the card
+ * surface #102033 — monotone lightness, >= 0.06 steps, nearest step >= 2:1.
+ * In dark the anchor flips: the strongest level is the brightest.
+ */
+:root {
+  --lvl-user: #1fb3b0;
+  --lvl-read: #008f8d;
+  --lvl-editor: #006c6b;
+  --lvl-admin: #004443;
+  --lvl-other: #8b8d98;
+  --lvl-none: var(--cds2-color-neutral-5);
+}
+
+:root.dark {
+  --lvl-user: #0d7271;
+  --lvl-read: #0a9c9a;
+  --lvl-editor: #1fc9c6;
+  --lvl-admin: #8cefec;
+  --lvl-other: #5a7593;
+  --lvl-none: #243c56;
+}
+
+:root {
+  --rbac-teal: var(--cds2-core-color-cribl-teal-9);
+  --rbac-sidebar-bg: var(--cds2-color-neutral-2);
+  --rbac-card-bg: var(--cds2-color-background-surface);
+  --rbac-card-inner-bg: var(--cds2-color-neutral-2);
+  --rbac-card-border: var(--cds2-color-border-neutral-subtle);
+  --rbac-card-shadow: 0 1px 2px rgba(0, 0, 0, 0.06);
+  --rbac-radius-card: 16px;
+}
+
+/* ---- Shared "glass card" surface --------------------------------------- */
+.glass-card {
+  background: var(--rbac-card-bg);
+  border: 1px solid var(--rbac-card-border);
+  border-radius: var(--rbac-radius-card);
+  box-shadow: var(--rbac-card-shadow);
+}
+
+/* Capra Cards inside the app pick up the same treatment. */
+.dark .detail-section {
+  background: var(--rbac-card-bg);
+  border-color: var(--rbac-card-border);
+  border-radius: var(--rbac-radius-card);
+  box-shadow: var(--rbac-card-shadow);
+}
+
+/* ---- Shared status pill (Active / Disabled / levels) -------------------- */
+.status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 2px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+  white-space: nowrap;
+  border: 1px solid transparent;
+}
+
+.status-pill::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+.status-pill-success {
+  color: var(--cds2-color-foreground-success-default, #3dd68c);
+  background: color-mix(in srgb, currentColor 12%, transparent);
+  border-color: color-mix(in srgb, currentColor 30%, transparent);
+}
+
+.status-pill-danger {
+  color: var(--cds2-color-foreground-danger-default, #ff6369);
+  background: color-mix(in srgb, currentColor 12%, transparent);
+  border-color: color-mix(in srgb, currentColor 30%, transparent);
+}
+
+.status-pill-warning {
+  color: var(--cds2-color-foreground-warning-default, #ffc53d);
+  background: color-mix(in srgb, currentColor 12%, transparent);
+  border-color: color-mix(in srgb, currentColor 30%, transparent);
+}
+
+.status-pill-neutral {
+  color: var(--cds2-color-foreground-subtle);
+  background: color-mix(in srgb, currentColor 10%, transparent);
+  border-color: color-mix(in srgb, currentColor 22%, transparent);
+}
+
+.status-pill-brand {
+  color: var(--rbac-teal);
+  background: color-mix(in srgb, currentColor 12%, transparent);
+  border-color: color-mix(in srgb, currentColor 30%, transparent);
+}
+
+/* ---- Directory master list, recoloured for the teal accent -------------- */
+:root.dark .master-detail-list {
+  border-right: 1px solid var(--rbac-card-border);
+  background: color-mix(in srgb, #000 14%, transparent);
+}
+
+/* Opened as a drawer over the graph, the list needs a solid panel. */
+:root.dark .is-collapsed > .master-detail-list {
+  background: var(--rbac-sidebar-bg);
+}
+
+:root.dark .entity-list,
+:root.dark .entity-list-header {
+  background: transparent;
+}
+
+.entity-row-selected .entity-row-button,
+.entity-row-selected .entity-row-button:hover {
+  background: linear-gradient(90deg, color-mix(in srgb, var(--rbac-teal) 20%, transparent), transparent) !important;
+  box-shadow: inset 3px 0 0 var(--rbac-teal) !important;
+}
+
+/* ---- Links: teal on navy (zero-specificity so component classes still win) */
+:where(.dark) a {
+  color: var(--rbac-teal);
+}
+
+:where(.dark) a:hover {
+  color: var(--cds2-core-color-criblteal-12);
+}
+
+/* Query results & other tables: entity names read as text, not raw links. */
+.query-table a,
+.detail-table a {
+  color: var(--cds2-color-foreground-default);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.query-table a:hover,
+.detail-table a:hover {
+  color: var(--rbac-teal);
+  text-decoration: underline;
+}
+
+/* ---- Level pill: a dot on the ordinal ramp + the level as text ---------- */
+.level-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 2px 9px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+  white-space: nowrap;
+  color: var(--cds2-color-foreground-default);
+  background: color-mix(in srgb, var(--cds2-color-foreground-default) 7%, transparent);
+}
+
+.level-pill-none {
+  font-weight: 400;
+  color: var(--cds2-color-foreground-subtle);
+}
+
+.level-pill-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+/* ---- Filter chips / small actions (shared by the access graph and the compare map) */
+.ag-chip,
+.ag-action {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 30px;
+  padding: 0 12px;
+  border-radius: 999px;
+  border: 1px solid var(--rbac-card-border);
+  background: color-mix(in srgb, var(--cds2-color-foreground-default) 4%, transparent);
+  color: var(--cds2-color-foreground-subtle);
+  font: inherit;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.ag-chip:hover,
+.ag-action:hover {
+  color: var(--cds2-color-foreground-default);
+}
+
+.ag-chip:focus-visible,
+.ag-action:focus-visible {
+  outline: 2px solid var(--cds2-color-border-focus);
+}
+
+.ag-chip-active {
+  color: var(--cds2-color-foreground-default);
+  border-color: color-mix(in srgb, var(--rbac-teal) 50%, transparent);
+  background: color-mix(in srgb, var(--rbac-teal) 16%, transparent);
+}

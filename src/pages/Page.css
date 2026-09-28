@@ -1,0 +1,33 @@
+.page-status {
+  padding: token('spacing.xl');
+}
+
+.detail-empty-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  min-height: 320px;
+}
+
+/* A page that isn't a tab (e.g. the Worker Group lookup) — gets its own header. */
+.lookup-page {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 0;
+}
+
+.lookup-page-header {
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: token('spacing.md') token('spacing.lg');
+  border-bottom: token('border.default');
+}
+
+.lookup-page-body {
+  flex: 1;
+  min-height: 0;
+}
