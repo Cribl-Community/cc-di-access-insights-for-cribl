@@ -31,39 +31,6 @@ is harder still.
 | **Worker Group lookup** | The reverse view: everyone who can reach a group, and how |
 | **SSO visibility** | Sign-in method per account; Teams mapped to identity-provider groups |
 
-## Works alongside Cribl Identity Checker
-
-Cribl Identity Checker and Access Insights look at the same access from two
-angles, so they fit together well.
-
-- **Identity Checker** is for **any user checking their own access**. It shows
-  your profile, the roles granting you access (with policy counts), your Teams,
-  and your effective authorization policy: each API object you can act on and
-  the actions allowed. It answers *"what can I do?"*
-- **Access Insights** is for **admins and reviewers looking across the
-  organization**. It answers *"who can do what, and why?"*
-
-| | Identity Checker | Access Insights |
-|---|---|---|
-| **Built for** | Every user, about themselves | Admins and reviewers, about everyone |
-| **Shows best** | Your exact API-level permissions (object / action) | Where each person's access comes from (Direct, a Team, Workspace, or an inherited admin role), down to Worker Groups and resources |
-| **Typical questions** | "Am I allowed to do this?" | "Why does this person have this?" · "How do these two people differ?" · "Who can reach this Worker Group?" · "Who are all our admins?" |
-
-**Using them together.** A typical *"I can't do X"* request:
-
-1. The user checks the object in Identity Checker to confirm what they can and
-   can't do.
-2. An admin opens that user in Access Insights → Directory to see which Team or
-   role grants the access, or that nothing does.
-3. The admin compares the user with a colleague who has the access, in Access
-   Check. The *Only colleague* lane shows the Team or role to add in Cribl.
-
-**Who should get which.** When an admin shares a Cribl App, its declared read
-permissions are granted to that person for requests made through the app.
-Anyone Access Insights is shared with can therefore see everyone's access, so
-share it with admins and reviewers. Identity Checker is the right view for
-everyone else.
-
 ## Permissions and data
 
 - **Read-only.** It only sends `GET` requests to the Cribl API paths declared
